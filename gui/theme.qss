@@ -1,0 +1,133 @@
+/* ============================================================
+   Blink — Dark Theme  (black + cyan + white)
+   ============================================================ */
+
+/* ---- Global ---- */
+QMainWindow, QWidget {
+    background-color: #0a0a0a;
+    color: #e0e0e0;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 13px;
+}
+
+/* ---- Camera panel ---- */
+QFrame#cameraPanel {
+    background-color: #0f0f0f;
+    border: 1px solid #1a1a1a;
+    border-radius: 8px;
+}
+
+QLabel#cameraLabel {
+    background-color: #080808;
+    color: #444444;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* ---- Stats panel ---- */
+QFrame#statsPanel {
+    background-color: #0d0d0d;
+    border: 1px solid #1a1a1a;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+QLabel#appTitle {
+    color: #00f5ff;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 6px;
+}
+
+QLabel#appSubtitle {
+    color: #555555;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+/* Big blink rate number */
+QLabel#blinkRateBig {
+    color: #00f5ff;
+    font-size: 64px;
+    font-weight: 700;
+}
+
+QLabel#statUnit {
+    color: #555555;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+/* ---- Stat cards ---- */
+QFrame#statCard {
+    background-color: #111111;
+    border: 1px solid #1e1e1e;
+    border-radius: 6px;
+}
+
+QLabel#statLabel {
+    color: #555555;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+QLabel#statValue {
+    color: #cccccc;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* ---- Status label ---- */
+QLabel#statusLabel {
+    color: #555555;
+    font-size: 11px;
+    padding: 4px;
+}
+
+/* ---- Buttons ---- */
+QPushButton#toggleBtn {
+    background-color: #00f5ff;
+    color: #000000;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 20px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+QPushButton#toggleBtn:hover {
+    background-color: #33f7ff;
+}
+
+QPushButton#toggleBtn:pressed {
+    background-color: #00c8d4;
+}
+
+QPushButton#toggleBtnStop {
+    background-color: #1a1a1a;
+    color: #ff5555;
+    border: 1px solid #ff5555;
+    border-radius: 6px;
+    padding: 12px 20px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+QPushButton#toggleBtnStop:hover {
+    background-color: #2a0a0a;
+}
+
+/* ---- System tray menu ---- */
+QMenu {
+    background-color: #111111;
+    color: #e0e0e0;
+    border: 1px solid #2a2a2a;
+}
+
+QMenu::item:selected {
+    background-color: #00f5ff;
+    color: #000000;
+}
