@@ -1,40 +1,48 @@
 """
-notifier.py
-Sends an OS-level toast notification and plays a single short beep.
-Runs in a daemon thread so it never blocks the main loop.
+notifier.py  v2
+OS toast + configurable beep count.
+  beep_count=1  → blink reminder
+  beep_count=2  → 20-20-20 break reminder
 """
 import threading
+import time
+
+from core.logger_setup import logger
 
 
 def notify(
     title: str = "Blink! 👁️",
     message: str = "Hey! Don't forget to blink.",
-):
-    """Fire-and-forget: toast + beep in background thread."""
-    t = threading.Thread(target=_notify_worker, args=(title, message), daemon=True)
+    beep_count: int = 1,
+) -> None:
+    """Fire-and-forget in a daemon thread."""
+    t = threading.Thread(target=_worker, args=(title, message, beep_count), daemon=True)
     t.start()
 
 
-def _notify_worker(title: str, message: str):
-    # --- OS Toast ---
+def _worker(title: str, message: str, beep_count: int) -> None:
+    # OS Toast
     try:
         from plyer import notification
-        notification.notify(
-            title=title,
-            message=message,
-            app_name="Blink",
-            timeout=5,
-        )
+        notification.notify(title=title, message=message, app_name="Blink", timeout=5)
     except Exception as exc:
-        print(f"[notifier] toast failed: {exc}")
+        logger.warning(f"Toast notification failed: {exc}")
 
-    # --- Beep (Windows: winsound; other OS: terminal bell) ---
+    # Beeps
+    _beep(beep_count)
+
+
+def _beep(count: int) -> None:
     try:
         import winsound
-        winsound.Beep(880, 250)   # 880 Hz, 250 ms — short, not annoying
+        for i in range(count):
+            winsound.Beep(880, 250)
+            if i < count - 1:
+                time.sleep(0.15)
     except ImportError:
-        # Linux / macOS fallback
         import os
-        os.system("printf '\\a'")
+        for _ in range(count):
+            os.system("printf '\\a'")
+            time.sleep(0.15)
     except Exception as exc:
-        print(f"[notifier] beep failed: {exc}")
+        logger.warning(f"Beep failed: {exc}")

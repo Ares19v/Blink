@@ -1,0 +1,9 @@
+2026-05-14 04:37:47 [INFO    ] blink: Low blink rate notification: 4.0/min
+2026-05-14 04:37:47 [INFO    ] blink: Low blink rate notification: 4.0/min
+2026-05-14 04:37:47 [INFO    ] blink: BlinkMonitor reset
+2026-05-14 04:37:47 [INFO    ] blink: EAR calibration started
+2026-05-14 04:37:47 [INFO    ] blink: Calibration done. mean EAR=0.300 → threshold=0.225
+2026-05-14 04:37:47 [INFO    ] blink: EAR calibration started
+2026-05-14 04:37:47 [WARNING ] blink: Not enough calibration frames — using default threshold
+2026-05-14 04:37:59 [INFO    ] blink: MainWindow initialised
+2026-05-14 04:38:00 [INFO    ] blink: EAR calibration started

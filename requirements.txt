@@ -3,3 +3,6 @@ opencv-python>=4.8.0
 PyQt6>=6.6.0
 plyer>=2.1.0
 numpy>=1.24.0
+matplotlib>=3.7.0
+pytest>=7.0.0
+pyinstaller>=6.0.0

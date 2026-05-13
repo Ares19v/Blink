@@ -1,0 +1,33 @@
+# Blink Project Scope & Future Improvements
+
+## 🧠 Depth — CV & ML Skills
+- **Adaptive EAR Threshold (Personalization)**: Add a calibration phase (5-10 sec on startup) that measures specific resting EAR and sets the threshold dynamically.
+- **Blink Duration Analysis**: Measure how long each blink lasts (milliseconds) to identify incomplete blinks.
+- **Fatigue Score (Compound Metric)**: Combine blink rate + blink duration + EAR variance into a single Eye Fatigue Score (0–100).
+
+## 📊 Data & Analytics Skills
+- **Session History with SQLite**: Store session data (blink rate, fatigue score, timestamps) in a local SQLite DB.
+- **History Charts**: Implement a history chart using PyQtGraph or matplotlib embedded in PyQt6.
+- **Daily/Weekly Heatmap**: Visual eye health heatmap across the day/week.
+
+## 🏗️ Software Engineering Quality
+- **Configuration File (JSON/TOML)**: Allow users to set alert thresholds, notification cooldowns, and camera indices via a config file.
+- **Proper Logging**: Implement Python's `logging` module with rotating log files.
+- **Unit Tests**: Write `pytest` tests for `BlinkMonitor` and `BlinkDetector` logic.
+
+## 💅 UX & Polish
+- **Settings Panel in the UI**: A dedicated settings page for user preferences.
+- **Break Reminder (20-20-20)**: Add a timer for the 20-20-20 rule.
+- **Packaged Executable (PyInstaller)**: Ship a single `.exe` for easy distribution.
+
+## 🏆 Priority Ranking
+1. Adaptive EAR calibration
+2. Fatigue Score
+3. SQLite + session chart
+4. pytest unit tests
+5. PyInstaller .exe packaging
+6. Settings panel
+7. 20-20-20 timer
+8. Blink duration analysis
+9. Daily heatmap
+10. Logging
