@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>Blink 👁️</h1>
+  <h1>Blink </h1>
   <p><b>Advanced Eye Health Monitor & Fatigue Tracker</b></p>
   
   <a href="https://github.com/Ares19v/Blink/actions/workflows/ci.yml">
