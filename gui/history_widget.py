@@ -2,18 +2,20 @@
 history_widget.py
 Standalone window showing session history charts (matplotlib in PyQt6).
 """
+
 from datetime import datetime
 
-import matplotlib
+import matplotlib  # noqa: E402
+
 matplotlib.use("QtAgg")
-import matplotlib.pyplot as plt
-from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
+import matplotlib.pyplot as plt  # noqa: E402
+from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas  # noqa: E402
 
-from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton, QHBoxLayout
-from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton, QHBoxLayout  # noqa: E402
+from PyQt6.QtCore import Qt  # noqa: E402
 
-from core.database import get_sessions
-from core.logger_setup import logger
+from core.database import get_sessions  # noqa: E402
+from core.logger_setup import logger  # noqa: E402
 
 _BG = "#0a0a0a"
 _CYAN = "#00f5ff"
@@ -79,9 +81,9 @@ class HistoryWidget(QWidget):
         self._draw(rows)
 
     def _draw(self, rows: list[tuple]) -> None:
-        # rows: (start_time, end_time, duration_secs, total_blinks, avg_blink_rate, avg_fatigue_score, avg_blink_duration_ms)
-        labels   = []
-        rates    = []
+        # rows: (start_time, end_time, duration_secs, total_blinks, rate, fatigue, avg_dur)
+        labels = []
+        rates = []
         fatigues = []
 
         for row in reversed(rows):
@@ -100,8 +102,14 @@ class HistoryWidget(QWidget):
         ax2.clear()
 
         # Chart 1: Blink Rate
-        bars1 = ax1.bar(range(len(labels)), rates, color=_CYAN, alpha=0.85, width=0.6)
-        ax1.axhline(12, color="#ff5555", linestyle="--", linewidth=1, label="Min healthy (12/min)")
+        ax1.bar(range(len(labels)), rates, color=_CYAN, alpha=0.85, width=0.6)
+        ax1.axhline(
+            12,
+            color="#ff5555",
+            linestyle="--",
+            linewidth=1,
+            label="Min healthy (12/min)",
+        )
         ax1.set_xticks(range(len(labels)))
         ax1.set_xticklabels(labels, color=_TEXT, fontsize=8)
         ax1.set_ylabel("Blinks / min", color=_TEXT)
@@ -116,8 +124,12 @@ class HistoryWidget(QWidget):
             "#00f5ff" if f < 40 else "#ffaa00" if f < 70 else "#ff5555"
             for f in fatigues
         ]
-        ax2.bar(range(len(labels)), fatigues, color=fatigue_colors, alpha=0.85, width=0.6)
-        ax2.axhline(40, color="#ffaa00", linestyle="--", linewidth=1, label="Moderate (40)")
+        ax2.bar(
+            range(len(labels)), fatigues, color=fatigue_colors, alpha=0.85, width=0.6
+        )
+        ax2.axhline(
+            40, color="#ffaa00", linestyle="--", linewidth=1, label="Moderate (40)"
+        )
         ax2.axhline(70, color="#ff5555", linestyle="--", linewidth=1, label="High (70)")
         ax2.set_xticks(range(len(labels)))
         ax2.set_xticklabels(labels, color=_TEXT, fontsize=8)

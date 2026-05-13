@@ -1,10 +1,10 @@
 {
   "camera_index": 0,
-  "blink_rate_threshold": 12.0,
+  "blink_rate_threshold": 30.0,
   "notification_cooldown": 90,
-  "ear_threshold": 0.21,
+  "ear_threshold": 0.3133,
   "twenty_twenty_twenty_enabled": true,
   "twenty_twenty_twenty_interval_sec": 1200,
   "sound_enabled": true,
-  "calibrated": false
+  "calibrated": true
 }

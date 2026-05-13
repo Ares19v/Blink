@@ -2,12 +2,19 @@
 settings_dialog.py
 User-editable settings saved to config.json.
 """
+
 from PyQt6.QtWidgets import (
-    QDialog, QVBoxLayout, QHBoxLayout, QFormLayout,
-    QLabel, QSpinBox, QDoubleSpinBox, QCheckBox,
-    QPushButton, QGroupBox, QComboBox,
+    QDialog,
+    QVBoxLayout,
+    QHBoxLayout,
+    QFormLayout,
+    QLabel,
+    QSpinBox,
+    QDoubleSpinBox,
+    QCheckBox,
+    QPushButton,
+    QGroupBox,
 )
-from PyQt6.QtCore import Qt
 
 from core.config_manager import save_config
 from core.logger_setup import logger
@@ -22,11 +29,15 @@ QSpinBox, QDoubleSpinBox, QComboBox {
 QCheckBox { color:#e0e0e0; }
 QCheckBox::indicator { width:16px; height:16px; border:1px solid #2a2a2a; border-radius:3px; background:#111; }
 QCheckBox::indicator:checked { background:#00f5ff; }
-QPushButton#save { background:#00f5ff; color:#000; border:none; border-radius:6px;
-                   padding:10px 24px; font-weight:700; }
+QPushButton#save {
+    background:#00f5ff; color:#000; border:none; border-radius:6px;
+    padding:10px 24px; font-weight:700;
+}
 QPushButton#save:hover { background:#33f7ff; }
-QPushButton#cancel { background:#1a1a1a; color:#888; border:1px solid #2a2a2a;
-                     border-radius:6px; padding:10px 24px; }
+QPushButton#cancel {
+    background:#1a1a1a; color:#888; border:1px solid #2a2a2a;
+    border-radius:6px; padding:10px 24px;
+}
 QPushButton#cancel:hover { color:#e0e0e0; }
 """
 
@@ -52,7 +63,7 @@ class SettingsDialog(QDialog):
 
         # --- Camera ---
         cam_group = QGroupBox("Camera")
-        cam_form  = QFormLayout(cam_group)
+        cam_form = QFormLayout(cam_group)
         self._cam_idx = QSpinBox()
         self._cam_idx.setRange(0, 9)
         self._cam_idx.setValue(self._cfg.get("camera_index", 0))
@@ -62,7 +73,7 @@ class SettingsDialog(QDialog):
 
         # --- Blink Detection ---
         blink_group = QGroupBox("Blink Detection")
-        blink_form  = QFormLayout(blink_group)
+        blink_form = QFormLayout(blink_group)
 
         self._rate_thr = QDoubleSpinBox()
         self._rate_thr.setRange(1.0, 30.0)
@@ -82,10 +93,12 @@ class SettingsDialog(QDialog):
 
         # --- 20-20-20 ---
         rule_group = QGroupBox("20-20-20 Break Reminder")
-        rule_form  = QFormLayout(rule_group)
+        rule_form = QFormLayout(rule_group)
 
         self._rule_enabled = QCheckBox("Enable")
-        self._rule_enabled.setChecked(self._cfg.get("twenty_twenty_twenty_enabled", True))
+        self._rule_enabled.setChecked(
+            self._cfg.get("twenty_twenty_twenty_enabled", True)
+        )
         rule_form.addRow(self._rule_enabled)
 
         self._rule_interval = QSpinBox()
@@ -115,11 +128,13 @@ class SettingsDialog(QDialog):
 
     # ------------------------------------------------------------------
     def _save(self) -> None:
-        self._cfg["camera_index"]                      = self._cam_idx.value()
-        self._cfg["blink_rate_threshold"]              = self._rate_thr.value()
-        self._cfg["notification_cooldown"]             = self._cooldown.value()
-        self._cfg["twenty_twenty_twenty_enabled"]      = self._rule_enabled.isChecked()
-        self._cfg["twenty_twenty_twenty_interval_sec"] = self._rule_interval.value() * 60
+        self._cfg["camera_index"] = self._cam_idx.value()
+        self._cfg["blink_rate_threshold"] = self._rate_thr.value()
+        self._cfg["notification_cooldown"] = self._cooldown.value()
+        self._cfg["twenty_twenty_twenty_enabled"] = self._rule_enabled.isChecked()
+        self._cfg["twenty_twenty_twenty_interval_sec"] = (
+            self._rule_interval.value() * 60
+        )
         save_config(self._cfg)
         logger.info("Settings saved")
         self.accept()

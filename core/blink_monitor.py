@@ -2,6 +2,7 @@
 blink_monitor.py  v2
 Rolling window stats + fatigue score.
 """
+
 import time
 from collections import deque
 
@@ -21,14 +22,14 @@ class BlinkMonitor:
         self.low_rate_threshold = low_rate_threshold
         self.notification_cooldown = notification_cooldown
 
-        self._blink_times: deque   = deque()   # timestamps
-        self._blink_durs:  deque   = deque()   # (timestamp, duration_ms) pairs
-        self._ear_buf:     deque   = deque(maxlen=300)  # ~10 s at 30 fps
-        self._fatigue_buf: deque   = deque(maxlen=60)
+        self._blink_times: deque = deque()  # timestamps
+        self._blink_durs: deque = deque()  # (timestamp, duration_ms) pairs
+        self._ear_buf: deque = deque(maxlen=300)  # ~10 s at 30 fps
+        self._fatigue_buf: deque = deque(maxlen=60)
 
-        self._last_notif:  float   = 0.0
+        self._last_notif: float = 0.0
         self._session_start: float = time.time()
-        self.total_blinks: int     = 0
+        self.total_blinks: int = 0
 
     # ------------------------------------------------------------------
     # Register events

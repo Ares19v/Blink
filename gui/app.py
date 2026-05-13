@@ -9,13 +9,21 @@ Main window — ties together all new features:
   - SQLite session save on stop
 Same black / cyan / white color scheme.
 """
+
 import cv2
 from datetime import datetime
 
 from PyQt6.QtWidgets import (
-    QApplication, QMainWindow, QWidget,
-    QVBoxLayout, QHBoxLayout, QLabel, QPushButton,
-    QFrame, QSystemTrayIcon, QMenu,
+    QApplication,
+    QMainWindow,
+    QWidget,
+    QVBoxLayout,
+    QHBoxLayout,
+    QLabel,
+    QPushButton,
+    QFrame,
+    QSystemTrayIcon,
+    QMenu,
 )
 from PyQt6.QtCore import Qt, QTimer, pyqtSlot
 from PyQt6.QtGui import QImage, QPixmap, QAction
@@ -46,7 +54,9 @@ class MainWindow(QMainWindow):
 
         # Core objects
         self._detector = BlinkDetector(
-            ear_threshold=self._cfg.get("ear_threshold", BlinkDetector.DEFAULT_EAR_THRESHOLD)
+            ear_threshold=self._cfg.get(
+                "ear_threshold", BlinkDetector.DEFAULT_EAR_THRESHOLD
+            )
         )
         self._monitor = BlinkMonitor(
             low_rate_threshold=self._cfg.get("blink_rate_threshold", 12.0),
@@ -93,7 +103,7 @@ class MainWindow(QMainWindow):
         lay.setContentsMargins(16, 16, 16, 16)
         lay.setSpacing(16)
         lay.addWidget(self._build_camera_panel(), stretch=3)
-        lay.addWidget(self._build_stats_panel(),  stretch=1)
+        lay.addWidget(self._build_stats_panel(), stretch=1)
 
     # ---- Left: camera ----
 
@@ -153,14 +163,21 @@ class MainWindow(QMainWindow):
         vbox.addSpacing(6)
 
         # Stat cards
-        self._ear_val,     ear_card     = self._stat_card("EAR Value",           "--")
-        self._fatigue_val, fatigue_card = self._stat_card("Fatigue Score",       "--")
-        self._dur_val,     dur_card     = self._stat_card("Avg Blink Duration",  "--")
-        self._total_val,   total_card   = self._stat_card("Total Blinks",        "0")
-        self._time_val,    time_card    = self._stat_card("Session Time",        "00:00")
-        self._face_val,    face_card    = self._stat_card("Face",                "Not detected")
+        self._ear_val, ear_card = self._stat_card("EAR Value", "--")
+        self._fatigue_val, fatigue_card = self._stat_card("Fatigue Score", "--")
+        self._dur_val, dur_card = self._stat_card("Avg Blink Duration", "--")
+        self._total_val, total_card = self._stat_card("Total Blinks", "0")
+        self._time_val, time_card = self._stat_card("Session Time", "00:00")
+        self._face_val, face_card = self._stat_card("Face", "Not detected")
 
-        for card in (ear_card, fatigue_card, dur_card, total_card, time_card, face_card):
+        for card in (
+            ear_card,
+            fatigue_card,
+            dur_card,
+            total_card,
+            time_card,
+            face_card,
+        ):
             vbox.addWidget(card)
 
         # 20-20-20 countdown
@@ -219,6 +236,7 @@ class MainWindow(QMainWindow):
 
     def _load_stylesheet(self) -> None:
         import os
+
         qss = os.path.join(os.path.dirname(__file__), "theme.qss")
         try:
             with open(qss, "r") as f:
@@ -252,7 +270,9 @@ class MainWindow(QMainWindow):
         if self.isVisible():
             self.hide()
         else:
-            self.show(); self.raise_(); self.activateWindow()
+            self.show()
+            self.raise_()
+            self.activateWindow()
 
     def _on_tray_activated(self, reason) -> None:
         if reason == QSystemTrayIcon.ActivationReason.DoubleClick:
@@ -294,7 +314,7 @@ class MainWindow(QMainWindow):
             self._stop()
 
     def _start(self) -> None:
-        self._monitor.low_rate_threshold   = self._cfg.get("blink_rate_threshold", 12.0)
+        self._monitor.low_rate_threshold = self._cfg.get("blink_rate_threshold", 12.0)
         self._monitor.notification_cooldown = self._cfg.get("notification_cooldown", 90)
         self._monitor.reset()
         self._session_start = datetime.now()
@@ -359,14 +379,14 @@ class MainWindow(QMainWindow):
     def _save_session(self) -> None:
         try:
             save_session(
-                start_time           = self._session_start,
-                end_time             = datetime.now(),
-                duration_secs        = self._monitor.get_session_duration(),
-                total_blinks         = self._monitor.total_blinks,
-                avg_blink_rate       = self._monitor.get_blink_rate() or 0.0,
-                avg_fatigue_score    = self._monitor.get_avg_fatigue_score(),
-                avg_blink_duration_ms= self._monitor.get_avg_blink_duration_ms(),
-                ear_threshold        = self._detector.ear_threshold,
+                start_time=self._session_start,
+                end_time=datetime.now(),
+                duration_secs=self._monitor.get_session_duration(),
+                total_blinks=self._monitor.total_blinks,
+                avg_blink_rate=self._monitor.get_blink_rate() or 0.0,
+                avg_fatigue_score=self._monitor.get_avg_fatigue_score(),
+                avg_blink_duration_ms=self._monitor.get_avg_blink_duration_ms(),
+                ear_threshold=self._detector.ear_threshold,
             )
             logger.info("Session saved to DB")
         except Exception as exc:
@@ -377,7 +397,9 @@ class MainWindow(QMainWindow):
     # ==================================================================
 
     @pyqtSlot(object, bool, float, bool, float)
-    def _on_frame(self, frame, blink: bool, ear: float, face: bool, dur_ms: float) -> None:
+    def _on_frame(
+        self, frame, blink: bool, ear: float, face: bool, dur_ms: float
+    ) -> None:
         if blink:
             self._monitor.register_blink(dur_ms)
         if ear > 0:
@@ -385,7 +407,8 @@ class MainWindow(QMainWindow):
 
         if self._monitor.should_notify():
             notifier.notify(
-                "Blink! 👁️", "Hey! Don't forget to blink.",
+                "Blink! 👁️",
+                "Hey! Don't forget to blink.",
                 beep_count=1,
             )
 
@@ -393,7 +416,7 @@ class MainWindow(QMainWindow):
         rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         h, w, ch = rgb.shape
         qimg = QImage(rgb.data, w, h, ch * w, QImage.Format.Format_RGB888)
-        pix  = QPixmap.fromImage(qimg).scaled(
+        pix = QPixmap.fromImage(qimg).scaled(
             self._cam_lbl.size(),
             Qt.AspectRatioMode.KeepAspectRatio,
             Qt.TransformationMode.SmoothTransformation,
@@ -435,11 +458,15 @@ class MainWindow(QMainWindow):
         rate = self._monitor.get_blink_rate()
         if rate is None:
             self._rate_lbl.setText("…")
-            self._rate_lbl.setStyleSheet("color:#555555; font-size:64px; font-weight:700;")
+            self._rate_lbl.setStyleSheet(
+                "color:#555555; font-size:64px; font-weight:700;"
+            )
         else:
             self._rate_lbl.setText(f"{rate:.1f}")
             color = "#00f5ff" if rate >= self._monitor.low_rate_threshold else "#ff5555"
-            self._rate_lbl.setStyleSheet(f"color:{color}; font-size:64px; font-weight:700;")
+            self._rate_lbl.setStyleSheet(
+                f"color:{color}; font-size:64px; font-weight:700;"
+            )
 
         self._total_val.setText(str(self._monitor.total_blinks))
 
@@ -478,7 +505,7 @@ class MainWindow(QMainWindow):
         if dlg.exec():
             self._cfg = dlg.get_config()
             if self._is_monitoring:
-                self._monitor.low_rate_threshold    = self._cfg["blink_rate_threshold"]
+                self._monitor.low_rate_threshold = self._cfg["blink_rate_threshold"]
                 self._monitor.notification_cooldown = self._cfg["notification_cooldown"]
             logger.info("Settings applied")
 

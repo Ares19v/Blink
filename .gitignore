@@ -9,3 +9,13 @@ models/
 .DS_Store
 .vscode/
 .idea/
+
+# Blink specific
+blink_history.db
+logs/
+config.json
+dist/
+build/
+*.spec
+.pytest_cache/
+scope.txt

@@ -7,3 +7,144 @@
 2026-05-14 04:37:47 [WARNING ] blink: Not enough calibration frames — using default threshold
 2026-05-14 04:37:59 [INFO    ] blink: MainWindow initialised
 2026-05-14 04:38:00 [INFO    ] blink: EAR calibration started
+2026-05-14 04:41:37 [INFO    ] blink: MainWindow initialised
+2026-05-14 04:41:38 [INFO    ] blink: EAR calibration started
+2026-05-14 04:42:31 [INFO    ] blink: MainWindow initialised
+2026-05-14 04:42:32 [INFO    ] blink: EAR calibration started
+2026-05-14 04:42:49 [INFO    ] blink: MainWindow initialised
+2026-05-14 04:42:50 [INFO    ] blink: EAR calibration started
+2026-05-14 04:43:03 [INFO    ] blink: MainWindow initialised
+2026-05-14 04:43:04 [INFO    ] blink: EAR calibration started
+2026-05-14 04:44:27 [INFO    ] blink: MainWindow initialised
+2026-05-14 04:44:28 [INFO    ] blink: EAR calibration started
+2026-05-14 04:44:53 [INFO    ] blink: MainWindow initialised
+2026-05-14 04:44:54 [INFO    ] blink: EAR calibration started
+2026-05-14 04:45:38 [INFO    ] blink: MainWindow initialised
+2026-05-14 04:45:38 [INFO    ] blink: EAR calibration started
+2026-05-14 04:46:50 [INFO    ] blink: MainWindow initialised
+2026-05-14 04:46:51 [INFO    ] blink: EAR calibration started
+2026-05-14 04:47:11 [INFO    ] blink: MainWindow initialised
+2026-05-14 04:47:11 [INFO    ] blink: EAR calibration started
+2026-05-14 04:47:12 [INFO    ] blink: Camera 0 opened
+2026-05-14 04:47:18 [INFO    ] blink: Calibration done. mean EAR=0.426 → threshold=0.320
+2026-05-14 04:47:18 [INFO    ] blink: Calibration dialog: threshold=0.320
+2026-05-14 04:47:22 [INFO    ] blink: Camera released
+2026-05-14 04:47:22 [INFO    ] blink: EAR threshold updated to 0.320
+2026-05-14 04:47:36 [INFO    ] blink: MainWindow initialised
+2026-05-14 04:47:45 [INFO    ] blink: BlinkMonitor reset
+2026-05-14 04:47:45 [INFO    ] blink: Monitoring started
+2026-05-14 04:47:45 [INFO    ] blink: Camera 0 opened
+2026-05-14 04:48:26 [INFO    ] blink: MainWindow initialised
+2026-05-14 04:48:44 [INFO    ] blink: History: no sessions found
+2026-05-14 04:48:48 [INFO    ] blink: EAR calibration started
+2026-05-14 04:48:48 [INFO    ] blink: Camera 0 opened
+2026-05-14 04:48:49 [DEBUG   ] blink: Blink: 70.4 ms, EAR=0.396
+2026-05-14 04:48:55 [INFO    ] blink: Calibration done. mean EAR=0.416 → threshold=0.312
+2026-05-14 04:48:55 [INFO    ] blink: Calibration dialog: threshold=0.312
+2026-05-14 04:49:01 [INFO    ] blink: Camera released
+2026-05-14 04:49:01 [INFO    ] blink: EAR threshold updated to 0.312
+2026-05-14 04:49:02 [INFO    ] blink: BlinkMonitor reset
+2026-05-14 04:49:02 [INFO    ] blink: Monitoring started
+2026-05-14 04:49:03 [INFO    ] blink: Camera 0 opened
+2026-05-14 04:49:07 [DEBUG   ] blink: Blink: 95.4 ms, EAR=0.342
+2026-05-14 04:49:11 [DEBUG   ] blink: Blink: 156.8 ms, EAR=0.325
+2026-05-14 04:49:13 [INFO    ] blink: Low blink rate notification: 12.0/min
+2026-05-14 04:49:15 [DEBUG   ] blink: Blink: 111.8 ms, EAR=0.347
+2026-05-14 04:49:16 [DEBUG   ] blink: Blink: 110.3 ms, EAR=0.355
+2026-05-14 04:49:16 [DEBUG   ] blink: Blink: 63.6 ms, EAR=0.341
+2026-05-14 04:49:17 [DEBUG   ] blink: Blink: 128.6 ms, EAR=0.339
+2026-05-14 04:49:17 [DEBUG   ] blink: Blink: 96.2 ms, EAR=0.359
+2026-05-14 04:49:18 [DEBUG   ] blink: Blink: 97.9 ms, EAR=0.340
+2026-05-14 04:49:19 [DEBUG   ] blink: Blink: 830.1 ms, EAR=0.334
+2026-05-14 04:49:20 [DEBUG   ] blink: Blink: 179.3 ms, EAR=0.318
+2026-05-14 04:49:23 [DEBUG   ] blink: Blink: 364.6 ms, EAR=0.332
+2026-05-14 04:49:23 [DEBUG   ] blink: Blink: 160.7 ms, EAR=0.319
+2026-05-14 04:49:24 [DEBUG   ] blink: Blink: 174.8 ms, EAR=0.346
+2026-05-14 04:49:24 [DEBUG   ] blink: Blink: 174.6 ms, EAR=0.316
+2026-05-14 04:49:24 [DEBUG   ] blink: Blink: 224.6 ms, EAR=0.351
+2026-05-14 04:49:25 [DEBUG   ] blink: Blink: 177.2 ms, EAR=0.326
+2026-05-14 04:49:25 [DEBUG   ] blink: Blink: 135.3 ms, EAR=0.328
+2026-05-14 04:49:26 [DEBUG   ] blink: Blink: 160.9 ms, EAR=0.344
+2026-05-14 04:49:26 [DEBUG   ] blink: Blink: 96.0 ms, EAR=0.326
+2026-05-14 04:49:28 [DEBUG   ] blink: Blink: 126.4 ms, EAR=0.344
+2026-05-14 04:49:29 [DEBUG   ] blink: Blink: 95.2 ms, EAR=0.326
+2026-05-14 04:49:29 [DEBUG   ] blink: Blink: 128.5 ms, EAR=0.314
+2026-05-14 04:49:30 [DEBUG   ] blink: Blink: 396.4 ms, EAR=0.316
+2026-05-14 04:49:30 [DEBUG   ] blink: Blink: 177.8 ms, EAR=0.337
+2026-05-14 04:49:31 [DEBUG   ] blink: Blink: 465.1 ms, EAR=0.323
+2026-05-14 04:49:33 [DEBUG   ] blink: Blink: 159.5 ms, EAR=0.323
+2026-05-14 04:49:33 [DEBUG   ] blink: Blink: 64.9 ms, EAR=0.313
+2026-05-14 04:49:34 [DEBUG   ] blink: Blink: 179.7 ms, EAR=0.342
+2026-05-14 04:49:35 [DEBUG   ] blink: Blink: 95.7 ms, EAR=0.333
+2026-05-14 04:49:35 [DEBUG   ] blink: Blink: 146.2 ms, EAR=0.326
+2026-05-14 04:49:36 [DEBUG   ] blink: Blink: 117.8 ms, EAR=0.374
+2026-05-14 04:49:37 [DEBUG   ] blink: Blink: 157.3 ms, EAR=0.326
+2026-05-14 04:49:38 [DEBUG   ] blink: Blink: 114.6 ms, EAR=0.315
+2026-05-14 04:49:42 [DEBUG   ] blink: Blink: 113.1 ms, EAR=0.467
+2026-05-14 04:49:49 [DEBUG   ] blink: Blink: 338.3 ms, EAR=0.315
+2026-05-14 04:49:49 [INFO    ] blink: Camera released
+2026-05-14 04:49:49 [INFO    ] blink: Session saved to DB
+2026-05-14 04:49:49 [INFO    ] blink: Monitoring stopped
+2026-05-14 04:49:55 [INFO    ] blink: EAR calibration started
+2026-05-14 04:49:55 [INFO    ] blink: Camera 0 opened
+2026-05-14 04:50:01 [DEBUG   ] blink: Blink: 62.5 ms, EAR=0.325
+2026-05-14 04:50:02 [INFO    ] blink: Calibration done. mean EAR=0.418 → threshold=0.313
+2026-05-14 04:50:02 [INFO    ] blink: Calibration dialog: threshold=0.313
+2026-05-14 04:50:04 [INFO    ] blink: Camera released
+2026-05-14 04:50:04 [INFO    ] blink: EAR threshold updated to 0.313
+2026-05-14 04:50:08 [INFO    ] blink: BlinkMonitor reset
+2026-05-14 04:50:08 [INFO    ] blink: Monitoring started
+2026-05-14 04:50:08 [INFO    ] blink: Camera 0 opened
+2026-05-14 04:50:18 [INFO    ] blink: Low blink rate notification: 0.0/min
+2026-05-14 04:50:22 [DEBUG   ] blink: Blink: 242.1 ms, EAR=0.319
+2026-05-14 04:50:26 [DEBUG   ] blink: Blink: 95.1 ms, EAR=0.332
+2026-05-14 04:50:42 [DEBUG   ] blink: Blink: 129.6 ms, EAR=0.327
+2026-05-14 04:50:46 [DEBUG   ] blink: Blink: 131.1 ms, EAR=0.350
+2026-05-14 04:50:52 [DEBUG   ] blink: Blink: 62.4 ms, EAR=0.336
+2026-05-14 04:50:52 [DEBUG   ] blink: Blink: 275.6 ms, EAR=0.332
+2026-05-14 04:50:55 [DEBUG   ] blink: Blink: 163.0 ms, EAR=0.325
+2026-05-14 04:50:56 [DEBUG   ] blink: Blink: 149.6 ms, EAR=0.314
+2026-05-14 04:51:01 [DEBUG   ] blink: Blink: 437.3 ms, EAR=0.314
+2026-05-14 04:51:01 [DEBUG   ] blink: Blink: 157.1 ms, EAR=0.315
+2026-05-14 04:51:02 [DEBUG   ] blink: Blink: 559.9 ms, EAR=0.317
+2026-05-14 04:51:14 [DEBUG   ] blink: Blink: 7004.3 ms, EAR=0.324
+2026-05-14 04:51:16 [INFO    ] blink: Camera released
+2026-05-14 04:51:17 [INFO    ] blink: Session saved to DB
+2026-05-14 04:51:17 [INFO    ] blink: Monitoring stopped
+2026-05-14 04:51:18 [INFO    ] blink: History chart drawn with 2 sessions
+2026-05-14 04:52:26 [INFO    ] blink: Settings saved
+2026-05-14 04:52:26 [INFO    ] blink: Settings applied
+2026-05-14 04:52:28 [INFO    ] blink: BlinkMonitor reset
+2026-05-14 04:52:28 [INFO    ] blink: Monitoring started
+2026-05-14 04:52:28 [INFO    ] blink: Camera 0 opened
+2026-05-14 04:52:38 [INFO    ] blink: Low blink rate notification: 0.0/min
+2026-05-14 04:52:39 [DEBUG   ] blink: Blink: 126.5 ms, EAR=0.324
+2026-05-14 04:52:45 [DEBUG   ] blink: Blink: 135.0 ms, EAR=0.317
+2026-05-14 04:52:46 [DEBUG   ] blink: Blink: 207.2 ms, EAR=0.319
+2026-05-14 04:52:55 [DEBUG   ] blink: Blink: 97.5 ms, EAR=0.341
+2026-05-14 04:52:55 [DEBUG   ] blink: Blink: 66.1 ms, EAR=0.349
+2026-05-14 04:52:56 [DEBUG   ] blink: Blink: 60.2 ms, EAR=0.324
+2026-05-14 04:52:57 [DEBUG   ] blink: Blink: 59.2 ms, EAR=0.325
+2026-05-14 04:52:58 [DEBUG   ] blink: Blink: 98.4 ms, EAR=0.328
+2026-05-14 04:52:58 [DEBUG   ] blink: Blink: 242.4 ms, EAR=0.358
+2026-05-14 04:53:06 [DEBUG   ] blink: Blink: 64.2 ms, EAR=0.336
+2026-05-14 04:53:06 [DEBUG   ] blink: Blink: 161.4 ms, EAR=0.321
+2026-05-14 04:53:13 [DEBUG   ] blink: Blink: 97.6 ms, EAR=0.351
+2026-05-14 04:53:19 [DEBUG   ] blink: Blink: 206.4 ms, EAR=0.327
+2026-05-14 04:53:20 [DEBUG   ] blink: Blink: 130.7 ms, EAR=0.315
+2026-05-14 04:53:22 [DEBUG   ] blink: Blink: 1327.1 ms, EAR=0.341
+2026-05-14 04:53:25 [DEBUG   ] blink: Blink: 172.3 ms, EAR=0.341
+2026-05-14 04:53:31 [DEBUG   ] blink: Blink: 95.3 ms, EAR=0.325
+2026-05-14 04:53:33 [DEBUG   ] blink: Blink: 306.4 ms, EAR=0.336
+2026-05-14 04:53:34 [DEBUG   ] blink: Blink: 237.1 ms, EAR=0.317
+2026-05-14 04:53:35 [DEBUG   ] blink: Blink: 234.9 ms, EAR=0.317
+2026-05-14 04:53:39 [DEBUG   ] blink: Blink: 95.8 ms, EAR=0.346
+2026-05-14 04:53:40 [DEBUG   ] blink: Blink: 176.2 ms, EAR=0.338
+2026-05-14 04:53:41 [INFO    ] blink: Camera released
+2026-05-14 04:53:41 [INFO    ] blink: Session saved to DB
+2026-05-14 04:53:41 [INFO    ] blink: Monitoring stopped
+2026-05-14 04:53:43 [INFO    ] blink: History chart drawn with 3 sessions
+2026-05-14 04:53:47 [INFO    ] blink: History chart drawn with 3 sessions
+2026-05-14 04:53:51 [INFO    ] blink: History chart drawn with 3 sessions
+2026-05-14 04:53:51 [INFO    ] blink: History chart drawn with 3 sessions
+2026-05-14 04:53:52 [INFO    ] blink: History chart drawn with 3 sessions

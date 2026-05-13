@@ -7,6 +7,7 @@ New in v2:
 - Blink duration tracking (ms)
 - process() returns 5-tuple: (frame, blink, ear, face_detected, blink_duration_ms)
 """
+
 import os
 import time
 import urllib.request
@@ -19,9 +20,9 @@ from mediapipe.tasks.python import vision as mp_vision
 
 from core.logger_setup import logger
 
-_MODEL_DIR  = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "models")
+_MODEL_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "models")
 _MODEL_PATH = os.path.join(_MODEL_DIR, "face_landmarker.task")
-_MODEL_URL  = (
+_MODEL_URL = (
     "https://storage.googleapis.com/mediapipe-models/"
     "face_landmarker/face_landmarker/float16/1/face_landmarker.task"
 )
@@ -36,8 +37,8 @@ def _ensure_model() -> None:
 
 
 class BlinkDetector:
-    LEFT_EYE  = [362, 385, 387, 263, 373, 380]
-    RIGHT_EYE = [33,  160, 158, 133, 153, 144]
+    LEFT_EYE = [362, 385, 387, 263, 373, 380]
+    RIGHT_EYE = [33, 160, 158, 133, 153, 144]
 
     DEFAULT_EAR_THRESHOLD = 0.21
     CONSEC_FRAMES = 2
@@ -57,7 +58,9 @@ class BlinkDetector:
         )
         self._landmarker = mp_vision.FaceLandmarker.create_from_options(opts)
 
-        self.ear_threshold: float = ear_threshold if ear_threshold else self.DEFAULT_EAR_THRESHOLD
+        self.ear_threshold: float = (
+            ear_threshold if ear_threshold else self.DEFAULT_EAR_THRESHOLD
+        )
         self._frame_counter: int = 0
         self._blink_in_progress: bool = False
         self._blink_start_time: float | None = None
@@ -77,7 +80,7 @@ class BlinkDetector:
         A = np.linalg.norm(pts[1] - pts[5])
         B = np.linalg.norm(pts[2] - pts[4])
         C = np.linalg.norm(pts[0] - pts[3])
-        return (A + B) / (2.0 * C) if C != 0 else 0.0
+        return float((A + B) / (2.0 * C)) if C != 0 else 0.0
 
     # ------------------------------------------------------------------
     # Calibration
@@ -100,7 +103,9 @@ class BlinkDetector:
 
         mean_ear = float(np.mean(self._calib_ears))
         self.ear_threshold = round(mean_ear * 0.75, 4)
-        logger.info(f"Calibration done. mean EAR={mean_ear:.3f} → threshold={self.ear_threshold:.3f}")
+        logger.info(
+            f"Calibration done. mean EAR={mean_ear:.3f} → threshold={self.ear_threshold:.3f}"
+        )
         return self.ear_threshold
 
     # ------------------------------------------------------------------
@@ -124,12 +129,19 @@ class BlinkDetector:
         if not result.face_landmarks:
             self._frame_counter = 0
             self._blink_in_progress = False
-            cv2.putText(frame, "No face detected", (10, 30),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.65, (80, 80, 80), 2)
+            cv2.putText(
+                frame,
+                "No face detected",
+                (10, 30),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.65,
+                (80, 80, 80),
+                2,
+            )
             return frame, False, 0.0, False, 0.0
 
         lm = result.face_landmarks[0]
-        left_ear  = self._ear(lm, self.LEFT_EYE)
+        left_ear = self._ear(lm, self.LEFT_EYE)
         right_ear = self._ear(lm, self.RIGHT_EYE)
         ear = (left_ear + right_ear) / 2.0
 
@@ -166,11 +178,25 @@ class BlinkDetector:
 
         # Overlays
         ear_color = (0, 245, 255) if ear >= self.ear_threshold else (60, 60, 255)
-        cv2.putText(frame, f"EAR: {ear:.3f}  Thr: {self.ear_threshold:.3f}", (10, 30),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, ear_color, 2)
+        cv2.putText(
+            frame,
+            f"EAR: {ear:.3f}  Thr: {self.ear_threshold:.3f}",
+            (10, 30),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            0.6,
+            ear_color,
+            2,
+        )
         if blink_detected:
-            cv2.putText(frame, f"BLINK! ({blink_duration_ms:.0f}ms)", (10, 58),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 245, 255), 2)
+            cv2.putText(
+                frame,
+                f"BLINK! ({blink_duration_ms:.0f}ms)",
+                (10, 58),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.6,
+                (0, 245, 255),
+                2,
+            )
 
         return frame, blink_detected, ear, True, blink_duration_ms
 

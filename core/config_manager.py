@@ -2,10 +2,13 @@
 config_manager.py
 Loads and saves user configuration to config.json in the project root.
 """
+
 import json
 import os
 
-_CONFIG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "config.json")
+_CONFIG_PATH = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "..", "config.json"
+)
 
 DEFAULT_CONFIG: dict = {
     "camera_index": 0,

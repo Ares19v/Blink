@@ -1,42 +1,80 @@
-# Blink — Eye Health Monitor
+<div align="center">
+  <h1>Blink 👁️</h1>
+  <p><b>Advanced Eye Health Monitor & Fatigue Tracker</b></p>
+  
+  <a href="https://github.com/Ares19v/Blink/actions/workflows/ci.yml">
+    <img src="https://github.com/Ares19v/Blink/actions/workflows/ci.yml/badge.svg" alt="CI/CD Build Status">
+  </a>
+  <img src="https://img.shields.io/badge/Python-3.11+-blue.svg" alt="Python Version">
+  <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License">
+</div>
 
-Blink is a Python desktop application that monitors your blink rate via webcam and sends OS-level notifications when your blinking drops below a healthy threshold.
+---
 
-## 🚀 Features
-- **Real-time Blink Detection**: Uses MediaPipe FaceLandmarker and Eye Aspect Ratio (EAR) for high-accuracy tracking.
-- **Blink Rate Monitoring**: Maintains a rolling 60-second window to calculate blinks per minute.
-- **Smart Notifications**: Sends an OS toast notification and plays a subtle beep when you're not blinking enough.
-- **Privacy Focused**: No data leaves your machine. Processing is done entirely locally.
-- **Modern UI**: A sleek, dark-themed dashboard built with PyQt6.
-- **System Tray Integration**: Runs quietly in the background.
+Blink is a locally-processed, privacy-first desktop application that monitors your blink rate via webcam to prevent digital eye strain. It uses computer vision (MediaPipe) to track your Eye Aspect Ratio (EAR) and nudges you when your eyes need a break.
 
-## 🛠️ Tech Stack
-- **Python**
-- **MediaPipe** (Computer Vision)
-- **OpenCV** (Video Capture)
-- **PyQt6** (GUI)
-- **Plyer** (Notifications)
+## ✨ Features
 
-## 📦 Installation
+- **Adaptive Calibration**: Automatically measures your unique resting eye aspect ratio on startup to ensure accurate tracking for every face shape.
+- **Blink Duration Analysis**: Tracks not just how often you blink, but *how long* each blink lasts (detecting incomplete/partial blinks).
+- **Fatigue Score Engine**: Calculates a real-time Eye Fatigue Score (0-100) combining your blink rate, duration, and EAR variance.
+- **20-20-20 Rule Timer**: Built-in break reminders to look 20 feet away for 20 seconds every 20 minutes.
+- **Session History & Analytics**: All data is persisted locally in SQLite, visualized via built-in Matplotlib history charts.
+- **Smart Notifications**: Non-intrusive OS toast notifications with configurable audio cues.
+- **Customizable**: Tweak settings via a dedicated UI panel (or directly via `config.json`).
+- **Privacy First**: 100% local processing. No internet connection required after the initial model download.
 
-1. Clone the repository:
-   ```bash
+## 🚀 Quick Start (Windows)
+
+We provide one-click scripts for Windows users:
+
+1. **Clone the repository**:
+   ```cmd
    git clone https://github.com/Ares19v/Blink.git
    cd Blink
    ```
+2. **Install**: Double-click `INSTALL.bat`. This will install dependencies and create a desktop shortcut.
+3. **Run**: Double-click `Run_Project.bat` (or use the desktop shortcut).
 
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+## 🛠️ Manual Installation & Development
 
-3. Run the application:
-   ```bash
-   python main.py
-   ```
+```bash
+# Create a virtual environment (optional but recommended)
+python -m venv venv
+venv\Scripts\activate
 
-## 🧠 How it Works
-The application uses the **Eye Aspect Ratio (EAR)** algorithm. By calculating the ratio of distances between vertical and horizontal landmarks of the eyes, it can detect when an eye is closed (blink). If the average blink rate falls below 12 blinks per minute (a common threshold for digital eye strain), it alerts the user.
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the app
+python main.py
+```
+
+## 🐳 Docker (CI/CD & Headless Testing)
+
+While Blink is a desktop GUI application (which requires direct webcam access and a display), we provide a Docker setup for automated headless testing and CI/CD validation.
+
+```bash
+docker-compose up --build
+```
+This will build the image, install dependencies, and run the `pytest` suite in an isolated container.
+
+## 🧪 Running Tests
+
+The core logic (EAR calculation, state machines, and statistics) is fully decoupled from the GUI and covered by Pytest.
+
+```bash
+pytest tests/ -v
+```
+
+## 🏗️ Building an Executable
+
+You can easily compile Blink into a single `.exe` file using PyInstaller:
+
+```cmd
+build.bat
+```
+The standalone executable will be located in the `dist/` folder.
 
 ## 📄 License
-MIT
+MIT License.

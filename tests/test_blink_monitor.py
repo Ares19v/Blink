@@ -3,6 +3,7 @@ test_blink_monitor.py
 pytest unit tests for BlinkMonitor logic.
 No camera or GUI required — pure Python.
 """
+
 import time
 import pytest
 from core.blink_monitor import BlinkMonitor
@@ -10,7 +11,9 @@ from core.blink_monitor import BlinkMonitor
 
 @pytest.fixture
 def monitor():
-    return BlinkMonitor(window_seconds=60, low_rate_threshold=12.0, notification_cooldown=5.0)
+    return BlinkMonitor(
+        window_seconds=60, low_rate_threshold=12.0, notification_cooldown=5.0
+    )
 
 
 def test_initial_state(monitor):

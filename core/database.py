@@ -2,11 +2,14 @@
 database.py
 SQLite session history — stores one row per monitoring session.
 """
+
 import sqlite3
 import os
 from datetime import datetime
 
-_DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "blink_history.db")
+_DB_PATH = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "..", "blink_history.db"
+)
 
 
 def _conn() -> sqlite3.Connection:
@@ -42,25 +45,36 @@ def save_session(
     ear_threshold: float,
 ) -> None:
     with _conn() as con:
-        con.execute("""
+        con.execute(
+            """
             INSERT INTO sessions
               (start_time, end_time, duration_secs, total_blinks,
                avg_blink_rate, avg_fatigue_score, avg_blink_duration_ms, ear_threshold)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-        """, (
-            start_time.isoformat(), end_time.isoformat(),
-            duration_secs, total_blinks, avg_blink_rate,
-            avg_fatigue_score, avg_blink_duration_ms, ear_threshold,
-        ))
+        """,
+            (
+                start_time.isoformat(),
+                end_time.isoformat(),
+                duration_secs,
+                total_blinks,
+                avg_blink_rate,
+                avg_fatigue_score,
+                avg_blink_duration_ms,
+                ear_threshold,
+            ),
+        )
         con.commit()
 
 
 def get_sessions(limit: int = 30) -> list[tuple]:
     """Returns rows ordered newest first."""
     with _conn() as con:
-        cur = con.execute("""
+        cur = con.execute(
+            """
             SELECT start_time, end_time, duration_secs, total_blinks,
                    avg_blink_rate, avg_fatigue_score, avg_blink_duration_ms
             FROM sessions ORDER BY start_time DESC LIMIT ?
-        """, (limit,))
+        """,
+            (limit,),
+        )
         return cur.fetchall()

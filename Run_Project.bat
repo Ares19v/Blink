@@ -13,12 +13,12 @@ cd /d "%~dp0"
 python --version >nul 2>&1
 if %errorlevel% neq 0 (
     echo [ERROR] Python is not installed or not in PATH.
-    echo Please install Python and try again.
+    echo Please install Python from python.org and try again.
     pause
     exit /b
 )
 
-:: Check for dependencies (checking mediapipe as a proxy)
+:: Quick dependency check (using mediapipe as proxy)
 python -c "import mediapipe" >nul 2>&1
 if %errorlevel% neq 0 (
     echo [INFO] Dependencies not found. Installing...

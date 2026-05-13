@@ -2,6 +2,7 @@
 camera.py  v2
 Signal now emits 5 values to match detector v2.
 """
+
 import cv2
 from PyQt6.QtCore import QThread, pyqtSignal
 
@@ -11,8 +12,8 @@ from core.logger_setup import logger
 
 class CameraThread(QThread):
     # (annotated_frame, blink_detected, ear_value, face_detected, blink_duration_ms)
-    frame_ready     = pyqtSignal(object, bool, float, bool, float)
-    error_occurred  = pyqtSignal(str)
+    frame_ready = pyqtSignal(object, bool, float, bool, float)
+    error_occurred = pyqtSignal(str)
 
     def __init__(self, detector: BlinkDetector, camera_index: int = 0):
         super().__init__()
@@ -21,7 +22,7 @@ class CameraThread(QThread):
         self._running = False
 
     def run(self) -> None:
-        cap = cv2.VideoCapture(self.camera_index, cv2.CAP_DSHOW)
+        cap = cv2.VideoCapture(self.camera_index)
         if not cap.isOpened():
             self.error_occurred.emit(f"Cannot open camera (index {self.camera_index})")
             return

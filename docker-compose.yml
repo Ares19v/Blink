@@ -1,0 +1,6 @@
+version: '3.8'
+
+services:
+  blink-tests:
+    build: .
+    container_name: blink_ci_tests

@@ -3,9 +3,14 @@ calibration_dialog.py
 Startup modal: 7-second countdown while face is tracked.
 Returns the calibrated EAR threshold on accept.
 """
+
 import cv2
 from PyQt6.QtWidgets import (
-    QDialog, QVBoxLayout, QLabel, QProgressBar, QPushButton,
+    QDialog,
+    QVBoxLayout,
+    QLabel,
+    QProgressBar,
+    QPushButton,
 )
 from PyQt6.QtCore import Qt, QTimer, pyqtSlot
 from PyQt6.QtGui import QImage, QPixmap
@@ -38,18 +43,19 @@ class CalibrationDialog(QDialog):
             QPushButton:disabled { background:#1a1a1a; color:#555; }
         """)
 
-        self._detector    = detector
-        self._cam_index   = camera_index
+        self._detector = detector
+        self._cam_index = camera_index
         self._cam_thread: CameraThread | None = None
-        self._elapsed     = 0
-        self._done        = False
+        self._elapsed = 0
+        self._done = False
         self.calibrated_threshold: float = detector.DEFAULT_EAR_THRESHOLD
 
         self._build_ui()
-        self._start_camera()
 
         self._countdown = QTimer(self)
         self._countdown.timeout.connect(self._tick)
+
+        self._start_camera()
 
     # ------------------------------------------------------------------
     def _build_ui(self) -> None:
@@ -125,9 +131,7 @@ class CalibrationDialog(QDialog):
     def _finish_calibration(self) -> None:
         threshold = self._detector.stop_calibration()
         self.calibrated_threshold = threshold
-        self._status_lbl.setText(
-            f"✓ Calibrated! EAR threshold set to {threshold:.3f}"
-        )
+        self._status_lbl.setText(f"✓ Calibrated! EAR threshold set to {threshold:.3f}")
         self._done_btn.setText("Continue →")
         self._done_btn.setEnabled(True)
         logger.info(f"Calibration dialog: threshold={threshold:.3f}")
