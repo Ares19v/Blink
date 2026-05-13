@@ -9,9 +9,17 @@ import matplotlib  # noqa: E402
 
 matplotlib.use("QtAgg")
 import matplotlib.pyplot as plt  # noqa: E402
-from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas  # noqa: E402
+from matplotlib.backends.backend_qtagg import (
+    FigureCanvasQTAgg as FigureCanvas,
+)  # noqa: E402
 
-from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton, QHBoxLayout  # noqa: E402
+from PyQt6.QtWidgets import (
+    QWidget,
+    QVBoxLayout,
+    QLabel,
+    QPushButton,
+    QHBoxLayout,
+)  # noqa: E402
 from PyQt6.QtCore import Qt  # noqa: E402
 
 from core.database import get_sessions  # noqa: E402
