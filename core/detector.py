@@ -120,11 +120,14 @@ class BlinkDetector:
         """
         h, w = frame.shape[:2]
 
+        # Fast downscaled inference (landmarks are normalized 0..1 so coordinates map back perfectly)
+        small_rgb = cv2.resize(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB), (320, 240))
         mp_img = mp.Image(
             image_format=mp.ImageFormat.SRGB,
-            data=cv2.cvtColor(frame, cv2.COLOR_BGR2RGB),
+            data=small_rgb,
         )
         result = self._landmarker.detect(mp_img)
+
 
         if not result.face_landmarks:
             self._frame_counter = 0

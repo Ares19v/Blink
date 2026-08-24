@@ -19,3 +19,5 @@ build/
 *.spec
 .pytest_cache/
 scope.txt
+frontend/node_modules/
+

@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cyber-bg: #0B0E14;
+  --color-cyber-card: #121722;
+  --color-cyber-cardHover: #182030;
+  --color-cyber-border: #1E293B;
+  --color-cyber-cyan: #00F5FF;
+  --color-cyber-cyanDark: #00B4D8;
+  --color-cyber-emerald: #10B981;
+  --color-cyber-amber: #F59E0B;
+  --color-cyber-rose: #EF4444;
+  --color-cyber-text: #E2E8F0;
+  --color-cyber-muted: #94A3B8;
+}
+
+body {
+  background-color: var(--color-cyber-bg);
+  color: var(--color-cyber-text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0B0E14;
+}
+::-webkit-scrollbar-thumb {
+  background: #1E293B;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00F5FF;
+}
+
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.25);
+}
+
+.glow-rose {
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.25);
+}
+
+.glow-emerald {
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
+}
