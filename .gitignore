@@ -21,3 +21,7 @@ build/
 scope.txt
 frontend/node_modules/
 
+
+# Local databases and runtime logs
+*.db
+*.log
