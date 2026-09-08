@@ -21,7 +21,18 @@ Re-architected with a high-performance **FastAPI + Uvicorn** backend and a cyber
 
 ---
 
+## 🖥️ Application Dashboard
+
+<p align="center">
+  <img src="assets/Blink_1.png" alt="Blink Eye Health Monitor Telemetry Dashboard" width="100%" style="border-radius: 8px; border: 1px solid #30363d;" />
+  <br>
+  <em>Blink Telemetry HUD: Real-time blink rate monitor (0.0 blinks/min), EAR tracking, composite fatigue gauge (0-100), and 20-20-20 eye strain timer.</em>
+</p>
+
+---
+
 ## 📑 Table of Contents
+- [🖥️ Application Dashboard](#️-application-dashboard)
 - [✨ Core Features](#-core-features)
 - [🏛️ System Architecture](#️-system-architecture)
 - [🔬 The Science: How it Works](#-the-science-how-it-works)
